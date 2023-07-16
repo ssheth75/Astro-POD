@@ -10,15 +10,15 @@ def cropOrResizeimage(inputImagePath, outputImagePath, targetSize):
     # Calculate the new dimensions
     if aspectRatio > 1:
         # Landscape image
-        new_width = int(targetSize * aspectRatio)
-        new_height = targetSize
+        newWidth = int(targetSize * aspectRatio)
+        newHeight = targetSize
     else:
         # Portrait or square image
-        new_width = targetSize
-        new_height = int(targetSize / aspectRatio)
+        newWidth = targetSize
+        newHeight = int(targetSize / aspectRatio)
     
     # Resize the image while maintaining aspect ratio
-    resizedImage = image.resize((new_width, new_height), Image.LANCZOS)
+    resizedImage = image.resize((newWidth, newHeight), Image.LANCZOS)
     
     # Calculate the crop box coordinates
     left = (resizedImage.width - targetSize) // 2

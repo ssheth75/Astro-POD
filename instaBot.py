@@ -46,8 +46,8 @@ imageTitle = ""
 centerTags = soup.find_all("center")
 
 if len(centerTags) >= 2:
-    target_center_tag = centerTags[1]
-    imageTitle = target_center_tag.find("b").text
+    targetCenterTag = centerTags[1]
+    imageTitle = targetCenterTag.find("b").text
     print(imageTitle)
 else:
     print("Image title not found.")
@@ -77,7 +77,6 @@ if targetOccurences:
     text = re.sub(r"\.\s+", ". ", text)
 
     formattedText = text.replace('\xa0', ' ')
-    # print(formattedText)
 else:
     print("Target paragraph not found.")
     exit(1)
