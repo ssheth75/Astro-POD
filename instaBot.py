@@ -12,7 +12,7 @@ import re
 
 
 ### Delete config file from directory to prevent future login issues ###
-config_folder = '/Users/shirvilsheth/Documents/Personal Projects/Astro-POD/config'
+config_folder = ''
 
 # Remove the config folder if it exists
 if os.path.exists(config_folder):
