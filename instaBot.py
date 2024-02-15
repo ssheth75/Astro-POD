@@ -12,7 +12,7 @@ import re
 
 
 ### Delete config file from directory to prevent future login issues ###
-config_folder = '/Users/shirvilsheth/Documents/Personal Projects/Astro-POD/config'
+config_folder = '/Users/shirvilsheth/Documents/PersonalProjects/Astro-POD/config'
 
 # Remove the config folder if it exists
 if os.path.exists(config_folder):
@@ -55,16 +55,17 @@ credits = []
 centerTags = soup.find_all("center")
 
 if len(centerTags) >= 2:
-    targetCenterTag = centerTags[1]
-    imageTitle = targetCenterTag.find("b").text
+    data = centerTags[1]
+    imageTitle = data.find("b").text
     print(imageTitle)
 
     # Obtain the credits
-    targetATags = targetCenterTag.find_all("a")
+    creditTags = data.find_all("a")
 
-    for targetATag in targetATags:
-        credits.append(targetATag.text)
-    print(credits)
+    for creditTag in creditTags:
+        if creditTag.text != "Copyright" and creditTag.text not in credits:
+            credits.append(creditTag.text)
+
 
 else:
     print("Image title not found.")
@@ -120,6 +121,7 @@ print(formattedCaption)
 
 ### Login to Instagram ###
 bot = Bot()
+
 bot.login(username=creds.username, password=creds.password)
 
 # Make the post
